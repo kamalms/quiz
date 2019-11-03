@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+     <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+    Quiz
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+<ion-list *ngFor="let question of filteredQuestions;">
+  <div class="badge badge-info">Question {{pager.index + 1}} of {{pager.count}}.</div>
+  <span> {{pager.index + 1}}. </span>
+  {{ question.name }}
+    <ion-item *ngFor="let option of question.options">
+    <ion-label> {{option.name}}</ion-label>
+    <ion-checkbox slot="end" [(ngModel)]="option.selected" (ionChange)="onSelect(question, option);"></ion-checkbox>
+  </ion-item>
+</ion-list>
+</ion-content>
